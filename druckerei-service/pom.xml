@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>at.itkollegimst.goegele.pos1makro.test2</groupId>
-	<artifactId>buchhandlung</artifactId>
+	<artifactId>druckerei</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>druckerei-service</name>
 	<description>Pos1 Test 2</description>
