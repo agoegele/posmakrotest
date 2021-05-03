@@ -9,12 +9,14 @@ import org.springframework.data.domain.AbstractAggregateRoot;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "bestellung")
 public class Bestellung extends AbstractAggregateRoot<Bestellung> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="idbestellung")
     private int id;
-
     @Embedded
+    @Column(name="statusbestellung")
     private Status status;
 
     public Bestellung() {
