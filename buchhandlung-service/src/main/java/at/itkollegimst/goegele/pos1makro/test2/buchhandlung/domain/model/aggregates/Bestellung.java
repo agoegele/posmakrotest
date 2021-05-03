@@ -3,6 +3,7 @@ package at.itkollegimst.goegele.pos1makro.test2.buchhandlung.domain.model.aggreg
 import at.itkollegimst.goegele.pos1makro.test2.buchhandlung.domain.model.commands.BuchBestelltCommand;
 import at.itkollegimst.goegele.pos1makro.test2.shareddomain.events.BuchBestelltEvent;
 import at.itkollegimst.goegele.pos1makro.test2.buchhandlung.domain.model.valueobjects.Status;
+import at.itkollegimst.goegele.pos1makro.test2.shareddomain.events.BuchBestelltEventData;
 import org.springframework.data.domain.AbstractAggregateRoot;
 
 import javax.persistence.*;
@@ -11,7 +12,7 @@ import javax.persistence.*;
 public class Bestellung extends AbstractAggregateRoot<Bestellung> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
     @Embedded
     private Status status;
@@ -20,7 +21,8 @@ public class Bestellung extends AbstractAggregateRoot<Bestellung> {
     }
     public Bestellung(BuchBestelltCommand command) {
         this.status = command.getStatus();
-        addDomainEvent(new BuchBestelltEvent());
+        addDomainEvent(new BuchBestelltEvent(new BuchBestelltEventData(this.id)));
+        this.status = Status.Bestellt;
     }
 
     private void addDomainEvent(Object event) {
