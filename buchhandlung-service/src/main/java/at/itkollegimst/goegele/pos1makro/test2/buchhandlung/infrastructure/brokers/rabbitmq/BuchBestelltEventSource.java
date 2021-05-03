@@ -1,7 +1,12 @@
 package at.itkollegimst.goegele.pos1makro.test2.buchhandlung.infrastructure.brokers.rabbitmq;
 
-public class BuchBestelltEventSource {
+import org.springframework.cloud.stream.annotation.Output;
+import org.springframework.messaging.MessageChannel;
 
-   // @Output("BuchBestellChannel")
+
+public interface BuchBestelltEventSource {
+
+    @Output("buchBestellChannel")
+    MessageChannel buchBestellung();
 
 }
