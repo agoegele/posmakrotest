@@ -15,7 +15,7 @@ public class Bestellung extends AbstractAggregateRoot<Bestellung> {
     private Status status;
 
     public Bestellung() {
-
+        status = Status.Unbekannt;
     }
 
     public long getId() {
