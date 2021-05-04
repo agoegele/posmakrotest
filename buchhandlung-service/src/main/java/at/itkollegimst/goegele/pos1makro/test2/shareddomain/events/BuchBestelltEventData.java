@@ -2,20 +2,20 @@ package at.itkollegimst.goegele.pos1makro.test2.shareddomain.events;
 
 public class BuchBestelltEventData {
 
-    private int id;
+    private String bestellid;
+
     private BuchBestelltEventData(){
-
     }
 
-    public BuchBestelltEventData(int id){
-        this.id=id;
+    public BuchBestelltEventData(String bestellid){
+        this.bestellid=bestellid;
+    }
+    
+    public String getBestellid() {
+        return bestellid;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public void setBestellid(String bestellid) {
+        this.bestellid = bestellid;
     }
 }

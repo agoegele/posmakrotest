@@ -4,10 +4,11 @@ import at.itkollegimst.goegele.pos1makro.test2.buchhandlung.domain.model.valueob
 
 public class BuchBestelltCommand {
 
-    Status status;
+    private Status status;
+    private String bestellid;
 
     public BuchBestelltCommand(){
-
+        this.status=Status.Unbekannt;
     }
 
     public BuchBestelltCommand(Status status){
@@ -20,5 +21,13 @@ public class BuchBestelltCommand {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public String getBestellid() {
+        return bestellid;
+    }
+
+    public void setBestellid(String bestellid) {
+        this.bestellid = bestellid;
     }
 }

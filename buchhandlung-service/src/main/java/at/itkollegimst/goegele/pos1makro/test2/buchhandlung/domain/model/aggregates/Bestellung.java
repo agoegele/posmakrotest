@@ -15,16 +15,20 @@ public class Bestellung extends AbstractAggregateRoot<Bestellung> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idbestellung")
     private int id;
-    @Embedded
+
     @Column(name="statusbestellung")
+    @Enumerated(EnumType.STRING)
     private Status status;
+
+    @Embedded
+    private Bestellungid bestellid;
 
     public Bestellung() {
     }
     public Bestellung(BuchBestelltCommand command) {
+        this.bestellid = new Bestellungid(command.getBestellid());
+        addDomainEvent(new BuchBestelltEvent(new BuchBestelltEventData(bestellid.getBestellid())));
         this.status = command.getStatus();
-        addDomainEvent(new BuchBestelltEvent(new BuchBestelltEventData(this.id)));
-        this.status = Status.Bestellt;
     }
 
     private void addDomainEvent(Object event) {
