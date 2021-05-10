@@ -1,8 +1,7 @@
 package at.itkollegimst.goegele.pos1makro.test2.druckerei.application.internal.outboundservices;
 
-
 import at.itkollegimst.goegele.pos1makro.test2.druckerei.infrastructure.brokers.rabbitmq.BuchBestelltBinding;
-import at.itkollegimst.goegele.pos1makro.test2.shareddomain.events.BuchBestelltEvent;
+import at.itkollegimst.goegele.pos1makro.test2.shareddomain.events.BuchGedrucktEvent;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
@@ -14,13 +13,13 @@ public class BuchGedrucktEventPublisherService {
 
     private BuchBestelltBinding eventSource;
 
-    private BuchGedrucktEventPublisherService(BuchBestelltBinding eventSource) {
+    public BuchGedrucktEventPublisherService(BuchBestelltBinding eventSource) {
     this.eventSource = eventSource;
     }
 
     @TransactionalEventListener
-    public void handleBuchBestelltEvent(BuchBestelltEvent event){
-        eventSource.buchBestellung().send(MessageBuilder.withPayload(event).build());
+    public void handleBuchGedrucktEvent(BuchGedrucktEvent event){
+        eventSource.buchDrucken().send(MessageBuilder.withPayload(event).build());
     }
 
 }
