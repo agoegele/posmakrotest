@@ -10,7 +10,8 @@ public class BuchDruckCommandService {
     @Transactional
     public void druckeBuch(String bestellID){
 
-        System.out.println("Bestellung ID: "+bestellID+ "; Wird gedruckt");
+        System.out.println("Bestellung "+bestellID+ " wird gedruckt");
+
 
     }
 }
