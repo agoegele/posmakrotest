@@ -1,7 +1,6 @@
 package at.itkollegimst.goegele.pos1makro.test2.druckerei.application.internal.commandservices;
 
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 
 @Service
